@@ -21,4 +21,15 @@
 проверять результат.
 """
 
+from unittest import result
+
+
 config = "switchport trunk allowed vlan 1,3,10,20,30,100"
+result_med = config.split(" ")
+med = result_med[4]
+result1 = med.split(',')
+result = list(result1)
+print (result)
+
+
+
