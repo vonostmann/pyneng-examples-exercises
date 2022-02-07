@@ -21,25 +21,3 @@ mac = (mac.replace("[","").replace("]","").replace("'","").replace(",","")).spli
 bi = bin(int(('{}{}{}'.format(mac[0], mac[1], mac[2])),16))
 result = str(bi[2::])
 print (result)
-
-
-
-#mac = '0x'+ mac
-#mac = hex(mac)
-
-mac = hex('mac', base=2)
-
-
-
-
-mac = str(mac.split(":"))
-#mac = mac.lower().replace(":", "")
-# int(mac)
-mac_bin = '''
-...:{}{}{} 
-...:
-'''
-mac_bin
-
-hex(mac[0],10)
-
