@@ -17,25 +17,7 @@
 
 mac = "AAAA:BBBB:CCCC"
 mac = str((mac.lower()).split(":"))     #убираем верхний регистр и разделяющее двоеточие
-mac = mac.replace("[","").replace("]","").replace("'","").replace(",","") # убираем спецсимовлы в строке
-mac = mac.split()
-mac = '{}{}{}'.format(mac[0], mac[1], mac[2])
-mac = '0x'+ mac
-mac = str(mac)
-
-mac = hex('mac', base=2)
-
-
-
-
-
-mac = str(mac.split(":"))
-#mac = mac.lower().replace(":", "")
-# int(mac)
-mac_bin = '''
-...:{}{}{} 
-...:
-'''
-mac_bin
-
-
+mac = (mac.replace("[","").replace("]","").replace("'","").replace(",","")).split() # убираем спецсимовлы в строке
+bi = bin(int(('{}{}{}'.format(mac[0], mac[1], mac[2])),16))
+result = str(bi[2::])
+print (result)
