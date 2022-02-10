@@ -24,6 +24,9 @@ $ python task_5_1c.py
 решить без использования условия if.
 """
 
+from re import A
+
+
 london_co = {
     "r1": {
         "location": "21 New Globe Walk",
@@ -49,3 +52,8 @@ london_co = {
         "routing": True,
     },
 }
+device_id = input ("Введите имя устройства: ")
+device_list = (str(list(london_co[device_id].keys())[::])).replace("[","(").replace("]",")").replace("'", "") 
+parameter_id = input ("Введите имя параметра{}".format(device_list))
+dev_id = london_co[device_id].setdefault(parameter_id, "Такого параметра нет")
+print(dev_id)
