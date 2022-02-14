@@ -44,7 +44,7 @@ london_co = {
     },
 }
 device_id = input ("Введите имя устройства: ")
-device_list = (str(list(london_co[device_id].keys())[::])).replace("[","(").replace("]",")").replace("'", "").lower 
+device_list = (str(list(london_co[device_id].keys())[::])).replace("[","(").replace("]",")").replace("'", "")
 parameter_id = input ("Введите имя параметра{}".format(device_list))
-dev_id = london_co[device_id].setdefault(parameter_id, "Такого параметра нет")
+dev_id = london_co[device_id].setdefault(parameter_id.lower(), "Такого параметра нет")
 print(dev_id)
