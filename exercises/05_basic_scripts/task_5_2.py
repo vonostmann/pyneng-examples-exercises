@@ -30,3 +30,31 @@ Out[1]: '11111111111111111111111111110000'
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+from ipaddress import ip_address
+
+
+device_id = input ("Введите IP устройства: ")
+ip_address = str(device_id[:-3].split("."))
+ip_address = (ip_address.replace("[","").replace("]","").replace("'","").replace(",","")).split()
+ip = '''
+ IP Address:
+ {0:<8} {1:<8} {2:<8} {3:<8}
+ {0:08b} {1:08b} {2:08b} {3:08b}
+'''
+mask = device_id[-2:]
+mask_bin = '1' * int((mask),10) + '0'* (35-int((mask),10))
+mask_out = '''
+ Mask:
+ {0}
+ {1:<8} {2:<8} {3:<8} {4:<8}
+ {5:<8} {6:<8} {7:<8} {8:<8}
+'''
+print(ip.format(int((ip_address[0]),10), int((ip_address[1]),10), int((ip_address[2]),10), int((ip_address[3]),10)))
+print(mask_out.format(mask, int((mask_bin[0:8]),2), int((mask_bin[9:17]),2), int((mask_bin[18:26]),2), int((mask_bin[27:33]),2), mask_bin[0:8], mask_bin[9:17], mask_bin[18:26], mask_bin[27:33]))
+
+##ip_address = '{:8} {:8} {:8} {:8}'.format(ip_binary0, ip_binary1, ip_binary2, ip_binary3)
+
+
+##ip_address = bin(int(('{}{}{}{}'.format(ip_address[0], ip_address[1], ip_address[2], ip_address[3])),2))
+
+ ##{0:08b} {1:08b} {2:08b} {3:08b}
