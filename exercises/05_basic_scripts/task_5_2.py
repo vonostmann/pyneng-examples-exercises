@@ -42,10 +42,10 @@ ip = '''
  {0:08b} {1:08b} {2:08b} {3:08b}
 ''' ## переменная для вывода в соответствующем форматировании
 mask = device_id[-2:] ##получение маски
-mask_bin = '1' * int((mask),10) + '0'* (35-int((mask),10)) ## приведение маски двоичный вид. нужно посмотреть сюда на 10 у инта
+mask_bin = '1' * int((mask),10) + ('0'* (32-int((mask),10))) ## приведение маски двоичный вид. нужно посмотреть сюда на 10 у инта
 mask_out = '''
  Mask:
- {0}
+ /{0}
  {1:<8} {2:<8} {3:<8} {4:<8}
  {5:<8} {6:<8} {7:<8} {8:<8}
 ''' ## переменная для вывода в соответствующем форматировании
@@ -53,5 +53,5 @@ mask_out = '''
 ## вывод адреса:
 print(ip.format(int((ip_address[0]),10), int((ip_address[1]),10), int((ip_address[2]),10), int((ip_address[3]),10)))
 ## вывод маски:
-print(mask_out.format(mask, int((mask_bin[0:8]),2), int((mask_bin[9:17]),2), int((mask_bin[18:26]),2), int((mask_bin[27:33]),2), mask_bin[0:8], mask_bin[9:17], mask_bin[18:26], mask_bin[27:33]))
+print(mask_out.format(mask, int((mask_bin[0:8]),2), int((mask_bin[8:16]),2), int((mask_bin[16:24]),2), int((mask_bin[24:32]),2), mask_bin[0:8], mask_bin[8:16], mask_bin[16:24], mask_bin[24:32]))
 
