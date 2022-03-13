@@ -55,19 +55,22 @@ from ipaddress import ip_address
 device_id = input ("Введите IP устройства: ")
 ip_address = str(device_id[:-3].split(".")) ##выделение адреса из введенной строки 
 ip_address = (ip_address.replace("[","").replace("]","").replace("'","").replace(",","")).split() ##вычищение адреса от мусора
+mask = device_id[-2:] ##получение маски
+mask_bin = '1' * int((mask),10) + ('0'* (32-int((mask),10)))
+mask_id = 32 - int(mask, 10)
+ip_bin = (str(bin(int(ip_address[0])))[2:] + str(bin(int(ip_address[1])))[2:] + str(bin(int(ip_address[2])))[2:] + str(bin(int(ip_address[3])))[2:])[-mask_id:] + ('1'*mask_id)
 ip = '''
  Network:
  {0:<8}  {1:<8}  {2:<8}  {3:<8}
  {0:08b}  {1:08b}  {2:08b}  {3:08b}
-''' ## переменная для вывода в соответствующем форматировании
-mask = device_id[-2:] ##получение маски
-mask_bin = '1' * int((mask),10) + ('0'* (32-int((mask),10))) ## приведение маски двоичный вид. нужно посмотреть сюда на 10 у инта
-mask_out = '''
+''' ## переменная для вывода в соответствующем форматировани ## приведение маски двоичный вид. нужно посмотреть сюда на 10 у инта
+
+ mask_out = '''
  Mask:
  /{0}
  {1:<8}  {2:<8}  {3:<8}  {4:<8}
  {5:<8}  {6:<8}  {7:<8}  {8:<8}
-''' ## переменная для вывода в соответствующем форматировании
+'''## переменная для вывода в соответствующем форматировании
 
 ## вывод адреса:
 print(ip.format(int((ip_address[0]),10), int((ip_address[1]),10), int((ip_address[2]),10), int((ip_address[3]),10)))
