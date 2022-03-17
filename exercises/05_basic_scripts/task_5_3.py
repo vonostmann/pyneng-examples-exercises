@@ -67,13 +67,9 @@ trunk_template = [
 device = input("Введите режим работы интерфейса (access/trunk): ")
 interface = input("Введите тип и номер интерфейса: ")
 vlan = input("Введите номер влан(ов): ")
-mode = device +'_template' ## создаем строку с именем шаблона
+mode = {
+    'access': access_template,
+    'trunk': trunk_template
+}
 print ('\n''interface {}'.format(interface)) ## выводим номер интерфейса
-print ('\n'.join(trunk_template).format(vlan)) ## выводим нужный шаблон на стандартный поток
-
-
-#, access_template.format(vlan))
-#print(london_co[device])
-#info = '''
-#
-#'''
+print ('\n'.join(mode[device]).format(vlan)) ## выводим нужный шаблон на стандартный поток
