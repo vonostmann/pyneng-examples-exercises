@@ -25,3 +25,14 @@ trunk_template = [
     "switchport mode trunk",
     "switchport trunk allowed vlan {}",
 ]
+
+device = input("Введите режим работы интерфейса (access/trunk): ")
+interface = input("Введите тип и номер интерфейса: ")
+vlan_mode = {'access': 'Введите номер VLAN: ', 'trunk': 'Введите разрешенные VLANы: '}
+vlan = input('{}'.format(vlan_mode[device]))
+mode = {
+    'access': access_template,
+    'trunk': trunk_template
+} #создаем словарь для пары "введенное устройство"="шаблон"
+print ('\n''interface {}'.format(interface)) ## выводим номер интерфейса
+print ('\n'.join(mode[device]).format(vlan)) ## выводим нужный шаблон на стандартный поток
