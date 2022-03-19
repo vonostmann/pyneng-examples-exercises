@@ -70,6 +70,6 @@ vlan = input("Введите номер влан(ов): ")
 mode = {
     'access': access_template,
     'trunk': trunk_template
-}
+} #создаем словарь для пары "введенное устройство"="шаблон"
 print ('\n''interface {}'.format(interface)) ## выводим номер интерфейса
 print ('\n'.join(mode[device]).format(vlan)) ## выводим нужный шаблон на стандартный поток
