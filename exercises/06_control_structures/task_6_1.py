@@ -12,4 +12,12 @@ MAC-адреса используются в формате XXXX.XXXX.XXXX
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
 
+from itertools import count
+
+
 mac = ["aabb:cc80:7000", "aabb:dd80:7340", "aabb:ee80:7000", "aabb:ff80:7000"]
+result = []
+for addr in mac:
+    result.append(addr.replace(":", "."))
+
+print(result)
