@@ -12,27 +12,18 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
-from email.headerregistry import UniqueSingleAddressHeader
-from socket import IPV6_RTHDR_TYPE_0
-
 
 ip = input ("Введите IP устройства: ")
-Читаем пооктетно адрес делаем из него список
-берем первый элемент для сравнения
-сравниваем с 223, если меньше то выводим unicast и стоп
-если больше то выводим multicast и идем дальше
-
-берем весь список 
-если равен 255.255.255.255 то вывод local broadcast и стоп
-если 0.0.0.0 то вывод unassigned и идем дальше
-
-выводим Unused
-
-add_type = {
-   'unicast' : ip_type[1], 
-   'multicast' : ip_type[2],
-   'local boroadcast' : ip_type[3],
-   'unassigned' : ip_type[4],
-   'unused' : ip_type[5]
-}
-print(output)
+ip_spl = ip.split(".")
+ip_int = ip_spl[0] + ip_spl[1] + ip_spl[2] +ip_spl[3]
+if ip_int == "0000":
+      print('unassigned')
+elif ip_int == "255255255255":
+      print('local broadcast')
+else:
+   if int((ip_spl[0]),10) < 223:
+      print('unicast')
+   elif  int((ip_spl[0]),10) < 239:
+      print('multicast')
+   else:
+      print ('unused')
