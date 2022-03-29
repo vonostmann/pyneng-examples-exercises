@@ -27,7 +27,7 @@ try:
    #проверка на наличие разделителя "."
    if '.' in ip:
       # проверка на количество октетов
-      if len(ip_spl) < 4:
+      if len(ip_spl) == 4:
       #проверка на значение октетов меньше 255
          if int((ip_spl[0]),10) <= 255 and int((ip_spl[1]),10) <= 255 and int((ip_spl[2]),10) <= 255 and int((ip_spl[3]),10) <= 255: 
             #ip_int = ip_spl[0] + ip_spl[1] + ip_spl[2] +ip_spl[3]
