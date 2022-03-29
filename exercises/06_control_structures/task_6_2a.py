@@ -26,18 +26,21 @@ try:
    int((ip_spl[0]),10)/int((ip_spl[1]),10)/int((ip_spl[2]),10)/int((ip_spl[3]),10) 
    #проверка на наличие разделителя "."
    if '.' in ip:
+      if len(ip_spl) < 4:
       #проверка на значение октетов меньше 255
-      if int((ip_spl[0]),10) <= 255 and int((ip_spl[1]),10) <= 255 and int((ip_spl[2]),10) <= 255 and int((ip_spl[3]),10) <= 255: 
-         #ip_int = ip_spl[0] + ip_spl[1] + ip_spl[2] +ip_spl[3]
-         if ip_int == "255255255255":
-            print('local broadcast')
-         else:
-            if int((ip_spl[0]),10) < 223:
-               print('unicast')
-            elif  int((ip_spl[0]),10) < 239:
-               print('multicast')
+         if int((ip_spl[0]),10) <= 255 and int((ip_spl[1]),10) <= 255 and int((ip_spl[2]),10) <= 255 and int((ip_spl[3]),10) <= 255: 
+            #ip_int = ip_spl[0] + ip_spl[1] + ip_spl[2] +ip_spl[3]
+            if ip_int == "255255255255":
+               print('local broadcast')
             else:
-               print ('unused')
+               if int((ip_spl[0]),10) < 223:
+                  print('unicast')
+               elif  int((ip_spl[0]),10) < 239:
+                  print('multicast')
+               else:
+                  print ('unused')
+         else:
+           print('Неправильный IP-адрес')          
       else:
          print('Неправильный IP-адрес')
    else:
