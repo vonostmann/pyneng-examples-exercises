@@ -45,7 +45,7 @@ interface FastEthernet0/7
  switchport trunk encapsulation dot1q
  switchport mode trunk
  switchport trunk allowed vlan 30
-
+добавил тест для оповещения
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 На стандартный поток вывода надо выводить только команды trunk настройки,
